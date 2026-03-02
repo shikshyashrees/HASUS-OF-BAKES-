@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Haus of Bakeries</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            background-color: #fff7f0;
+        }
+
+        header {
+            background-color: #8b4513;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        nav {
+            background-color: #d2691e;
+            padding: 10px;
+            text-align: center;
+        }
+
+        nav a {
+            color: white;
+            margin: 0 15px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        h2 {
+            text-align: center;
+            color: #8b4513;
+        }
+
+        .products {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            flex-wrap: wrap;
+            padding: 20px;
+        }
+
+        .card {
+            background: white;
+            width: 260px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .card img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+        }
+
+        .card h3 {
+            color: #8b4513;
+        }
+
+        .price {
+            color: #d2691e;
+            font-weight: bold;
+        }
+
+        button {
+            background-color: #8b4513;
+            color: white;
+            border: none;
+            padding: 10px;
+            margin-bottom: 15px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #5a2d0c;
+        }
+
+        .cart {
+            background: white;
+            margin: 20px;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+
+        footer {
+            background-color: #8b4513;
+            color: white;
+            text-align: center;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Haus of Bakeries</h1>
+    <p>Fresh • Handmade • Delicious</p>
+</header>
+
+<nav>
+    <a href="#">Home</a>
+    <a href="#">Menu</a>
+    <a href="#">Contact</a>
+</nav>
+
+<h2>Our Bakery Items</h2>
+
+<div class="products">
+
+    <div class="card">
+        <img src="cake.jpg" alt="Chocolate Cake">
+        <h3>Chocolate Cake</h3>
+        <p class="price">Rs. 1200</p>
+        <button onclick="addToCart('Chocolate Cake', 1200)">Add to Cart</button>
+    </div>
+
+    <div class="card">
+        <img src="bread.jpg" alt="Fresh Bread">
+        <h3>Fresh Bread</h3>
+        <p class="price">Rs. 150</p>
+        <button onclick="addToCart('Fresh Bread', 150)">Add to Cart</button>
+    </div>
+
+    <div class="card">
+        <img src="cupcake.jpg" alt="Cupcake">
+        <h3>Cupcake</h3>
+        <p class="price">Rs. 80</p>
+        <button onclick="addToCart('Cupcake', 80)">Add to Cart</button>
+    </div>
+
+</div>
+
+<div class="cart">
+    <h2>🛒 Cart</h2>
+    <ul id="cartItems"></ul>
+    <p><strong>Total: Rs. <span id="total">0</span></strong></p>
+</div>
+
+<footer>
+    <p>© 2026 Haus of Bakeries | All Rights Reserved</p>
+</footer>
+
+<script>
+    let total = 0;
+
+    function addToCart(item, price) {
+        const cartItems = document.getElementById("cartItems");
+        const li = document.createElement("li");
+        li.textContent = item + " - Rs. " + price;
+        cartItems.appendChild(li);
+
+        total += price;
+        document.getElementById("total").innerText = total;
+    }
+</script>
+
+</body>
+</html>
